@@ -61,18 +61,8 @@ export default class GameComponent {
       // create the score var
       let score = 0;
 
-      // when the snake eats the food
-      function eatFood() {
-        // increase score
-        score++;
-        // display score on screen
-        document.getElementById('score')!.innerHTML = score.toString();
-        // generate new food
-        food.x = Math.floor(Math.random() * 79) * 10;
-        food.y = Math.floor(Math.random() * 59) * 10;
-      }
-
-      const gameLoop = setInterval(draw, score > 0 ? 100 / score : 100);
+      const startGame = (speed?: number) => setInterval(draw, speed ?? 100);
+      let gameLoop = startGame();
 
       // add keyboard controls
       let direction = 'RIGHT';
@@ -94,6 +84,21 @@ export default class GameComponent {
           if (head.x === array[i].x && head.y === array[i].y) return true;
         }
         return false;
+      }
+
+      // when the snake eats the food
+      function eatFood() {
+        // increase score
+        score++;
+        // display score on screen
+        document.getElementById('score')!.innerHTML = score.toString();
+        // generate new food
+        food.x = Math.floor(Math.random() * 79) * 10;
+        food.y = Math.floor(Math.random() * 59) * 10;
+
+        // restart game loop with new speed
+        clearInterval(gameLoop);
+        gameLoop = startGame(100 - (score * 2));
       }
 
       // draw everything to the canvas
