@@ -28,7 +28,7 @@ import { RouterLink } from '@angular/router';
       font-size: 3rem;
       font-weight: bold;
       margin-bottom: 2rem;
-      color: var(--primary-color);
+      color: #fff;
     }
 
     .menu__content {

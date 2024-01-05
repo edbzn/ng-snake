@@ -1,13 +1,8 @@
-:root {
-    --primary-color: #00b0ff;
-    --secondary-color: #ff6d00;
-    --background-color: #00060d;
-}
-
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   width: 100%;
-  background-color: var(--background-color);
-}
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background-color: #000000;
+  }
